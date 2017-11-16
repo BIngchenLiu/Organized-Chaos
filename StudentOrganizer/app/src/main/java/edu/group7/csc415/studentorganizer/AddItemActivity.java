@@ -19,6 +19,7 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_item);
 
+        //assign variables to widgets
         typeSpinner = (Spinner) findViewById(R.id.typeSpinner);
         name = (EditText) findViewById(R.id.nameValue);
         time = (EditText) findViewById(R.id.timeValue);
@@ -26,6 +27,7 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
         descript = (EditText) findViewById(R.id.descriptionValue);
         courseLabel = (TextView) findViewById(R.id.courseLabel);
 
+        //set adapter for spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.types_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         typeSpinner.setAdapter(adapter);
@@ -35,6 +37,7 @@ public class AddItemActivity extends AppCompatActivity implements AdapterView.On
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         Object selected;
         selected = parent.getItemAtPosition(pos);
+
         switch (selected.toString())
         {
             case "Select Type":

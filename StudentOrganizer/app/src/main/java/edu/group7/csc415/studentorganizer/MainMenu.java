@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,7 +19,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -85,19 +86,22 @@ public class MainMenu extends AppCompatActivity{
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_bar, menu);
+    public boolean onCreateOptionsMenu (Menu menu) {
+        //set up Settings Menu
+        getMenuInflater().inflate(R.menu.settings_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        /* TODO
-        Intent menu = new Intent(getApplicationContext(),item.getActionView().getClass());
-        startActivity(menu);
-        */
-        return true;
+        switch (item.getItemId()) {
+            case R.id.settings_menu_item:
+                //Settings Menu selected, start SettingsActivity
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void setupSpinner(){
